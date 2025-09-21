@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HPU HFQ — Founding Member Sign‑Up</title>
+  <style>
+    :root { --bg:#0f1226; --card:#171a36; --acc:#6ac7ff; --text:#eef2ff; --muted:#a9b4d0; }
+    * { box-sizing:border-box; font-family: system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji'; }
+    body { margin:0; background:linear-gradient(120deg,#0f1226,#0b0e20); color:var(--text); }
+    .wrap { max-width:760px; margin:48px auto; padding:0 16px; }
+    .card { background: var(--card); border:1px solid rgba(255,255,255,.06); border-radius:16px; padding:28px; box-shadow:0 20px 40px rgba(0,0,0,.35); }
+    h1 { font-size:28px; margin:0 0 8px; }
+    p.lead { color:var(--muted); line-height:1.6; margin:0 0 20px; }
+    form { display:grid; gap:16px; }
+    label { font-weight:600; font-size:14px; color:#cdd7ff; display:block; margin:0 0 6px; }
+    input, select, button, textarea { width:100%; padding:14px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.12); background:#0f1230; color:var(--text); font-size:15px; }
+    input:focus, select:focus, textarea:focus { outline:2px solid var(--acc); border-color:transparent; }
+    .row { display:grid; gap:16px; grid-template-columns:1fr; }
+    @media (min-width: 640px) { .row.two { grid-template-columns:1fr 1fr; } }
+    .req { color:#ff9bb3; font-weight:700; margin-left:4px; }
+    .muted { color:var(--muted); font-size:13px; }
+    .footer { display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+    .btn { cursor:pointer; border:none; background:linear-gradient(135deg,#3aa6ff,#8c7bff); color:white; font-weight:700; letter-spacing:.2px; }
+    .btn.secondary { background:#20244d; border:1px dashed rgba(255,255,255,.2); }
+    .pill { display:inline-block; padding:6px 10px; border-radius:999px; background:#0c1133; border:1px solid rgba(255,255,255,.1); color:#b9c6ff; font-size:12px; margin:0 8px 0 0; }
+    .topline { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
+    .notice { font-size:12px; color:#c9d4ff; }
+    a { color:#a9d5ff; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="topline">
+        <span class="pill">HFQ</span>
+        <span class="pill">Founding Cohort</span>
+        <span class="pill">Dues $0 (this year)</span>
+      </div>
+      <h1>HPU Hedge Fund & Quantitative Finance Society — Sign‑Up</h1>
+      <p class="lead">
+        HFQ is HPU’s markets lab. Learn investing & quant, build ideas in pods, and trade via a
+        <strong>live‑market simulation</strong> (stocks/ETFs/options/FX/crypto) starting from a shared
+        <strong>$1,000,000</strong> notional portfolio. All majors welcome; no experience needed.
+        We meet <strong>Mondays @ 7:30 p.m.</strong>
+      </p>
+      <form action="https://formsubmit.co/bbird1@highpoint.edu" method="POST" id="signupForm">
+        <!-- FormSubmit config -->
+        <input type="hidden" name="_subject" value="HFQ — New Founding Member Sign‑Up">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://example.com/thank-you-hfq"> <!-- Optional: replace after hosting -->
+        <!-- Fields -->
+        <div>
+          <label for="fullname">Full Name <span class="req">*</span></label>
+          <input id="fullname" name="Full Name" type="text" placeholder="First Last" required />
+        </div>
+        <div class="row two">
+          <div>
+            <label for="email">HPU Email <span class="req">*</span></label>
+            <input id="email" name="HPU Email" type="email" placeholder="you@highpoint.edu" required />
+            <div class="muted">Use your @highpoint.edu email.</div>
+          </div>
+          <div>
+            <label for="grad">Graduation Year <span class="req">*</span></label>
+            <select id="grad" name="Graduation Year" required>
+              <option value="" selected disabled>Choose…</option>
+              <option>2026</option><option>2027</option><option>2028</option><option>2029</option><option>2030</option><option>2031</option>
+            </select>
+          </div>
+        </div>
+        <div class="row two">
+          <div>
+            <label for="sid">Student ID <span class="req">*</span></label>
+            <input id="sid" name="Student ID" type="text" inputmode="numeric" pattern="[0-9]{5,10}" placeholder="9‑digit ID" required />
+            <div class="muted">Numbers only.</div>
+          </div>
+          <div>
+            <label for="interest">Primary Interest (optional)</label>
+            <select id="interest" name="Primary Interest">
+              <option value="">Choose…</option>
+              <option>Long/Short Equity</option>
+              <option>Systematic / Quant</option>
+              <option>Options & Volatility</option>
+              <option>Macro / Rates / FX</option>
+              <option>Data / Engineering</option>
+              <option>Careers & Outreach</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label for="notes">Notes (optional)</label>
+          <textarea id="notes" name="Notes" rows="3" placeholder="Experience, interests, or goals (optional)"></textarea>
+        </div>
+        <div class="footer">
+          <button class="btn" type="submit">Submit Registration</button>
+          <button class="btn secondary" type="button" onclick="copyLink()">Copy Shareable Link</button>
+          <span class="notice">Submissions are emailed securely to the club inbox.</span>
+        </div>
+      </form>
+      <p class="muted" style="margin-top:16px">
+        Tip: After you host this file, generate a QR by visiting:<br>
+        <code>https://chart.googleapis.com/chart?cht=qr&amp;chs=240x240&amp;chl=YOUR_HOSTED_URL</code>
+      </p>
+    </div>
+  </div>
+<script>
+function copyLink(){
+  const url = window.location.href;
+  navigator.clipboard.writeText(url).then(()=>{
+    alert('Link copied. Share it in Snapchat/IG/GroupMe.');
+  });
+}
+// Client-side guard for email domain (not strict; users can bypass if needed)
+document.getElementById('signupForm').addEventListener('submit', function(e){
+  const email = document.getElementById('email').value.trim();
+  if(!/@highpoint\.edu$/i.test(email)){
+    if(!confirm('Your email is not @highpoint.edu. Submit anyway?')){
+      e.preventDefault();
+    }
+  }
+});
+</script>
+</body>
+</html>
