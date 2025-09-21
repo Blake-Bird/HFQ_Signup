@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>HPU HFQ — Founding Member Sign‑Up</title>
+  <title>HPU HFQ — Founding Member Sign-Up</title>
   <style>
     :root { --bg:#0f1226; --card:#171a36; --acc:#6ac7ff; --text:#eef2ff; --muted:#a9b4d0; }
     * { box-sizing:border-box; font-family: system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji'; }
@@ -27,6 +27,7 @@
     .topline { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
     .notice { font-size:12px; color:#c9d4ff; }
     a { color:#a9d5ff; }
+    .success { display:none; margin-top:16px; padding:12px 14px; border-radius:12px; background:#0c1133; border:1px solid rgba(255,255,255,.12); color:#bfe3ff; }
   </style>
 </head>
 <body>
@@ -37,19 +38,22 @@
         <span class="pill">Founding Cohort</span>
         <span class="pill">Dues $0 (this year)</span>
       </div>
-      <h1>HPU Hedge Fund & Quantitative Finance Society — Sign‑Up</h1>
+      <h1>HPU Hedge Fund & Quantitative Finance Society — Sign-Up</h1>
       <p class="lead">
         HFQ is HPU’s markets lab. Learn investing & quant, build ideas in pods, and trade via a
-        <strong>live‑market simulation</strong> (stocks/ETFs/options/FX/crypto) starting from a shared
+        <strong>live-market simulation</strong> (stocks/ETFs/options/FX/crypto) starting from a shared
         <strong>$1,000,000</strong> notional portfolio. All majors welcome; no experience needed.
-        We meet <strong>Mondays @ 7:30 p.m.</strong>
+        We meet <strong>Mondays @ 7:30 p.m.</strong>
       </p>
       <form action="https://formsubmit.co/bbird1@highpoint.edu" method="POST" id="signupForm">
         <!-- FormSubmit config -->
-        <input type="hidden" name="_subject" value="HFQ — New Founding Member Sign‑Up">
+        <input type="hidden" name="_subject" value="HFQ — New Founding Member Sign-Up">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://example.com/thank-you-hfq"> <!-- Optional: replace after hosting -->
+        <!-- Optional: change this to a hosted thank-you page later -->
+        <input type="hidden" name="_next" value="https://blake-bird.github.io/HFQ_Signup/thanks.html">
+        <!-- Anti-spam honeypot -->
+        <input type="text" name="_honey" style="display:none">
         <!-- Fields -->
         <div>
           <label for="fullname">Full Name <span class="req">*</span></label>
@@ -72,8 +76,8 @@
         <div class="row two">
           <div>
             <label for="sid">Student ID <span class="req">*</span></label>
-            <input id="sid" name="Student ID" type="text" inputmode="numeric" pattern="[0-9]{5,10}" placeholder="9‑digit ID" required />
-            <div class="muted">Numbers only.</div>
+            <input id="sid" name="Student ID" type="text" inputmode="numeric" pattern="[0-9]{1,12}" placeholder="e.g., 7" required />
+            <div class="muted">Numbers only. If your ID is just <strong>7</strong>, that's fine.</div>
           </div>
           <div>
             <label for="interest">Primary Interest (optional)</label>
@@ -98,10 +102,7 @@
           <span class="notice">Submissions are emailed securely to the club inbox.</span>
         </div>
       </form>
-      <p class="muted" style="margin-top:16px">
-        Tip: After you host this file, generate a QR by visiting:<br>
-        <code>https://chart.googleapis.com/chart?cht=qr&amp;chs=240x240&amp;chl=YOUR_HOSTED_URL</code>
-      </p>
+      <div class="success" id="successBox">Thank you! Your registration was submitted.</div>
     </div>
   </div>
 <script>
@@ -111,7 +112,7 @@ function copyLink(){
     alert('Link copied. Share it in Snapchat/IG/GroupMe.');
   });
 }
-// Client-side guard for email domain (not strict; users can bypass if needed)
+// Client-side guard for email domain (not strict)
 document.getElementById('signupForm').addEventListener('submit', function(e){
   const email = document.getElementById('email').value.trim();
   if(!/@highpoint\.edu$/i.test(email)){
